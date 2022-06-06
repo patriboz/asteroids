@@ -38,7 +38,7 @@ export default () => {
       let newMesh = mesh.clone();
       newMesh.position.set(asteroid.position.x, asteroid.position.y, asteroid.position.z);
       
-      newMesh.applyQuaternion(asteroid.quat);
+      newMesh.applyQuaternion(asteroid.quat.x, asteroid.quat.y, asteroid.quat.z, asteroid.quat.w);
       newMesh.scale.set(asteroid.scale.x, asteroid.scale.y, asteroid.scale.z);
 console.log(newMesh);
       app.add(newMesh);
