@@ -12,16 +12,35 @@ export default () => {
   const { renderer, camera } = useInternals();
   const localPlayer = useLocalPlayer();
   const physics = usePhysics();
-  const textureLoader = new THREE.TextureLoader();
 
   const defaultSpawn = new THREE.Vector3(0, 5, 0);
   let physicsIds = [];
   let asteroids = [
-    {position: new THREE.Vector3(0, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)},
-    {position: new THREE.Vector3(10, 0, 0), quat: new THREE.Quaternion(0, 0.7071067811865475, 0, 0.7071067811865476), scale: new THREE.Vector3(0.03, 0.03, 0.03)},
-    {position: new THREE.Vector3(20, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.02, 0.02, 0.02)},
-    {position: new THREE.Vector3(35, -10, 5), quat: new THREE.Quaternion(0, 1, 0, 0), scale: new THREE.Vector3(0.05, 0.03, 0.05)},
-    {position: new THREE.Vector3(50, -30, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)}
+    {
+      position: new THREE.Vector3(0, 0, 0), 
+      quat: new THREE.Quaternion(0, 0, 0, 1), 
+      scale: new THREE.Vector3(0.04, 0.04, 0.04)
+    },
+    {
+      position: new THREE.Vector3(10, 0, 0), 
+      quat: new THREE.Quaternion(0, 0.7071067811865475, 0, 0.7071067811865476), 
+      scale: new THREE.Vector3(0.03, 0.03, 0.03)
+    },
+    {
+      position: new THREE.Vector3(20, 0, 0), 
+      quat: new THREE.Quaternion(0, 0, 0, 1), 
+      scale: new THREE.Vector3(0.02, 0.02, 0.02)
+    },
+    {
+      position: new THREE.Vector3(35, -10, 5), 
+      quat: new THREE.Quaternion(0, 1, 0, 0), 
+      scale: new THREE.Vector3(0.05, 0.03, 0.05)
+    },
+    {
+      position: new THREE.Vector3(50, -30, 0), 
+      quat: new THREE.Quaternion(0, 0, 0, 1), 
+      scale: new THREE.Vector3(0.04, 0.04, 0.04)
+    }
   ];
   
 
@@ -50,7 +69,7 @@ export default () => {
       physicsIds.push(physicsId);
       newMesh.physicsId = physicsId;
 
-      physics.setAngularVelocity(newMesh, new THREE.Vector3(1000, 0, 0), false);
+      physics.applyAngularVelocity(newMesh, new THREE.Vector3(0.5, 0, 0), true);
     }
 
     
@@ -71,6 +90,7 @@ export default () => {
 
   useFrame(({ timeDiff, timestamp }) => {
 
+    
     if(localPlayer.avatar) {
 
       
