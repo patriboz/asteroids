@@ -99,7 +99,7 @@ export default () => {
       
 
       // asteroids[1].physicsObject.quaternion.premultiply(q1);
-      asteroids[1].physicsObject.position.add(new THREE.Vector3(Math.sin(timestamp) * 3), 0, 0);
+      asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + Math.sin(timestamp) * 3);
       asteroids[1].physicsObject.updateMatrixWorld();
       asteroids[1].physicsObject.needsUpdate = true;
 
