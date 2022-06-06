@@ -38,9 +38,9 @@ export default () => {
       newMesh.applyQuaternion(asteroid.quat);
       newMesh.scale.set(asteroid.scale);
 
-      const physicsId = physics.addGeometry(newMesh);
-      physicsIds.push(physicsId);
-      newMesh.physicsId = physicsId;
+      // const physicsId = physics.addGeometry(newMesh);
+      // physicsIds.push(physicsId);
+      // newMesh.physicsId = physicsId;
 
       app.add(mesh);
     }
