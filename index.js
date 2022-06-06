@@ -26,42 +26,43 @@ export default () => {
     });
 
     const mesh = gltf.scene;
+    mesh.scale.set(0.1, 0.1, 0.1);
 
     const physicsId = physics.addGeometry(mesh);
     physicsIds.push(physicsId);
     mesh.physicsId = physicsId;
     app.add(mesh);
     app.updateMatrixWorld();
-})();
+  })();
 
 
-useCleanup(() => {
-  // for (const physicsId of physicsIds) {
-  //   physics.removeGeometry(physicsId);
-  // }
-});
-
-
-
+  useCleanup(() => {
+    for (const physicsId of physicsIds) {
+      physics.removeGeometry(physicsId);
+    }
+  });
 
 
 
-useFrame(({ timeDiff, timestamp }) => {
 
-  if(localPlayer.avatar) {
+
+
+  useFrame(({ timeDiff, timestamp }) => {
+
+    if(localPlayer.avatar) {
+
+      
+              
+      
+    }
+
+    // Resets character position to spawn position
+    if(localPlayer.position.y < -10) {
+      physics.setCharacterControllerPosition(localPlayer.characterController, defaultSpawn);
+    }
 
     
-            
-    
-  }
-
-  // Resets character position to spawn position
-  if(localPlayer.position.y < -10) {
-    physics.setCharacterControllerPosition(localPlayer.characterController, defaultSpawn);
-  }
-
-  
-});
+  });
 
 
 
