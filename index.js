@@ -31,6 +31,15 @@ export default () => {
     });
 
     const mesh = gltf.scene;
+//
+    mesh.scale.set(0.04, 0.04, 0.04);
+
+    const physicsId = physics.addGeometry(mesh);
+    physicsIds.push(physicsId);
+    mesh.physicsId = physicsId;
+    
+    app.add(mesh);
+//
     console.log(mesh);
 
     for(const asteroid of asteroids) {
@@ -49,13 +58,7 @@ console.log(newMesh);
       
     }
 
-    // mesh.scale.set(0.04, 0.04, 0.04);
-
-    // const physicsId = physics.addGeometry(mesh);
-    // physicsIds.push(physicsId);
-    // mesh.physicsId = physicsId;
     
-    // app.add(mesh);
     app.updateMatrixWorld();
   })();
 
