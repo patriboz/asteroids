@@ -15,6 +15,11 @@ export default () => {
 
   const defaultSpawn = new THREE.Vector3(0, 5, 0);
   let physicsIds = [];
+  let asteroids = [
+    {position: new THREE.Vector3(0, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)},
+    {position: new THREE.Vector3(5, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)},
+    {position: new THREE.Vector3(10, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)},
+  ];
   
 
   (async () => {
@@ -26,12 +31,27 @@ export default () => {
     });
 
     const mesh = gltf.scene;
-    mesh.scale.set(0.01, 0.01, 0.01);
 
-    const physicsId = physics.addGeometry(mesh);
-    physicsIds.push(physicsId);
-    mesh.physicsId = physicsId;
-    app.add(mesh);
+    for(const asteroid of asteroids) {
+      const newMesh = mesh.clone();
+      newMesh.position.set(asteroid.position);
+      newMesh.applyQuaternion(asteroid.quat);
+      newMesh.scale.set(asteroid.scale);
+
+      const physicsId = physics.addGeometry(newMesh);
+      physicsIds.push(physicsId);
+      newMesh.physicsId = physicsId;
+
+      app.add(mesh);
+    }
+
+    // mesh.scale.set(0.04, 0.04, 0.04);
+
+    // const physicsId = physics.addGeometry(mesh);
+    // physicsIds.push(physicsId);
+    // mesh.physicsId = physicsId;
+    
+    // app.add(mesh);
     app.updateMatrixWorld();
   })();
 
