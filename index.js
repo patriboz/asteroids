@@ -31,16 +31,16 @@ export default () => {
         
     });
 
-    const mesh = gltf.scene;
+    let mesh = gltf.scene;
 //
     mesh.scale.set(0.04, 0.04, 0.04);
 
-    const physicsId = physics.addGeometry(mesh);
+    let physicsId = physics.addGeometry(mesh);
     physicsIds.push(physicsId);
     mesh.physicsId = physicsId;
     
 
-    const mesh2 = mesh.clone();
+    let mesh2 = mesh.clone();
     mesh2.scale.set(0.04, 0.04, 0.04);
     mesh2.position.set(10, 0, 0);
     physicsId = physics.addGeometry(mesh2);
