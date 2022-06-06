@@ -53,23 +53,23 @@ export default () => {
     
 
 
-    //for(const asteroid of asteroids) {
-    asteroids.forEach(asteroid => {
+    for(const asteroid of asteroids) {
+    
       let newMesh = mesh.clone();
       newMesh.position.set(asteroid.position.x, asteroid.position.y, asteroid.position.z);
-      console.log(newMesh);
+      
       //newMesh.applyQuaternion(asteroid.quat);
-      //newMesh.scale.set(asteroid.scale);
-
+      newMesh.scale.set(asteroid.scale.x, asteroid.scale.y, asteroid.scale.z);
+console.log(newMesh);
       app.add(newMesh);
       newMesh.updateMatrixWorld();
 
-      // let physicsId = physics.addGeometry(newMesh);
-      // physicsIds.push(physicsId);
-      // newMesh.physicsId = physicsId;
+      let physicsId = physics.addGeometry(newMesh);
+      physicsIds.push(physicsId);
+      newMesh.physicsId = physicsId;
 
       
-    });
+    }
 
     
     app.updateMatrixWorld();
