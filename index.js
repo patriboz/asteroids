@@ -11,7 +11,7 @@ export default () => {
   const physics = usePhysics();
   const textureLoader = new THREE.TextureLoader();
 
-  const defaultSpawn = new THREE.Vector3(0, 0, 0);
+  const defaultSpawn = new THREE.Vector3(0, 100, 0);
   let physicsIds = [];
   
 
