@@ -96,15 +96,16 @@ export default () => {
   useFrame(({ timeDiff, timestamp }) => {
 
     if(asteroids[1].physicsObject) {
-      physics.setAngularVelocity(asteroids[1].physicsObject, v1, true);
+      
 
-      //asteroids[1].physicsObject.quaternion.premultiply(q1);
+      // asteroids[1].physicsObject.quaternion.premultiply(q1);
+      asteroids[1].physicsObject.position.add((Math.sin(timestamp) * 3), 0, 0);
       asteroids[1].physicsObject.updateMatrixWorld();
       asteroids[1].physicsObject.needsUpdate = true;
 
-      asteroids[1].mesh.quaternion.copy(asteroids[1].physicsObject.quaternion);
+      asteroids[1].mesh.position.copy(asteroids[1].physicsObject.position);
 
-      console.log(asteroids[1].physicsObject.quaternion);
+      
     }
 
     // Resets character position to spawn position
