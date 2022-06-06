@@ -44,7 +44,7 @@ export default () => {
   ];
 
   const q1 = new THREE.Quaternion(0, 0.0087265, 0, 0.9999619);
-  
+  const v1 = new THREE.Vector3(1, 0, 0);
 
   (async () => {
     const url = `https://patriboz.github.io/asteroids/assets/rock/scene.gltf`; // todo: relative path?
@@ -94,9 +94,13 @@ export default () => {
   useFrame(({ timeDiff, timestamp }) => {
 
     if(asteroids[1].physicsObject) {
+      physics.addTorque(asteroids[1].physicsObject, v1, true);
+
       asteroids[1].physicsObject.quaternion.premultiply(q1);
       asteroids[1].physicsObject.updateMatrixWorld();
       asteroids[1].physicsObject.needsUpdate = true;
+
+      
     }
 
     // Resets character position to spawn position
