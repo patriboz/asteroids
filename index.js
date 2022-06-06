@@ -93,9 +93,11 @@ export default () => {
 
   useFrame(({ timeDiff, timestamp }) => {
 
-    asteroids[1].physicsObject.quaternion.premultiply(q1);
-    asteroids[1].physicsObject.updateMatrixWorld();
-    asteroids[1].physicsObject.needsUpdate = true;
+    if(asteroids[1].physicsObject) {
+      asteroids[1].physicsObject.quaternion.premultiply(q1);
+      asteroids[1].physicsObject.updateMatrixWorld();
+      asteroids[1].physicsObject.needsUpdate = true;
+    }
 
     // Resets character position to spawn position
     if(localPlayer.position.y < -50) {
