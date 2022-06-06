@@ -95,19 +95,19 @@ export default () => {
 
   useFrame(({ timeDiff, timestamp }) => {
 
-    if(asteroids[1].physicsObject) {
+    // if(asteroids[1].physicsObject) {
       
-      delta = 0.1 * Math.sin(timestamp / 500);
+    //   delta = 0.1 * Math.sin(timestamp / 500);
 
-      // asteroids[1].physicsObject.quaternion.premultiply(q1);
-      asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + delta);
-      asteroids[1].physicsObject.updateMatrixWorld();
-      asteroids[1].physicsObject.needsUpdate = true;
+    //   // asteroids[1].physicsObject.quaternion.premultiply(q1);
+    //   asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + delta);
+    //   asteroids[1].physicsObject.updateMatrixWorld();
+    //   asteroids[1].physicsObject.needsUpdate = true;
 
-      asteroids[1].mesh.position.copy(asteroids[1].physicsObject.position);
+    //   asteroids[1].mesh.position.copy(asteroids[1].physicsObject.position);
 
-      console.log(delta);
-    }
+    //   console.log(delta);
+    // }
 
     // Resets character position to spawn position
     if(localPlayer.position.y < -50) {
