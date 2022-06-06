@@ -4,6 +4,8 @@ import metaversefile from 'metaversefile';
 
 const { useApp, useFrame, useInternals, useLocalPlayer, useLoaders, usePhysics, useCleanup, useActivate, useCamera } = metaversefile;
 
+const baseUrl = import.meta.url.replace(/(\/)[^\/\\]*$/, '$1');
+
 export default () => {
   const app = useApp();
   const { renderer, camera } = useInternals();
@@ -16,7 +18,7 @@ export default () => {
   
 
   (async () => {
-    const url = `./assets/rock/scene.gltf`; // must prefix "/bride-game" when working locally
+    const url = `${baseUrl}/assets/rock/scene.gltf`; // must prefix "/bride-game" when working locally
     let gltf = await new Promise((accept, reject) => {
         const {gltfLoader} = useLoaders();
         gltfLoader.load(url, accept, function onprogress() {}, reject);
