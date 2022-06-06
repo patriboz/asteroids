@@ -97,7 +97,7 @@ export default () => {
 
     if(asteroids[1].physicsObject) {
       
-      delta = 0.1 * Math.sin(timestamp / 500);
+      delta = (0.1 * Math.sin(timestamp / 500)) + 1;
 
       // asteroids[1].physicsObject.quaternion.premultiply(q1);
       asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + delta);
