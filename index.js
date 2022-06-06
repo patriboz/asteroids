@@ -73,6 +73,8 @@ export default () => {
 
       asteroid.mesh = newMesh;
       asteroid.physicsObject = physicsId;
+
+      physics.setAngularVelocity(physicsId, new THREE.Vector3(1, 0, 0), true);
     }
     console.log(asteroids);
     
@@ -89,12 +91,12 @@ export default () => {
 
 
 
-
+  
 
   useFrame(({ timeDiff, timestamp }) => {
 
     if(asteroids[1].physicsObject) {
-      physics.addTorque(asteroids[1].physicsObject, v1, true);
+      // physics.addTorque(asteroids[1].physicsObject, v1, true);
 
       //asteroids[1].physicsObject.quaternion.premultiply(q1);
       asteroids[1].physicsObject.updateMatrixWorld();
