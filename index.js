@@ -18,7 +18,7 @@ export default () => {
   let physicsIds = [];
   let asteroids = [
     {position: new THREE.Vector3(0, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)},
-    {position: new THREE.Vector3(10, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.03, 0.03, 0.03)},
+    {position: new THREE.Vector3(10, 0, 0), quat: new THREE.Quaternion(0, 0.7071067811865475, 0, 0.7071067811865476), scale: new THREE.Vector3(0.03, 0.03, 0.03)},
     {position: new THREE.Vector3(20, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.02, 0.02, 0.02)}
   ];
   
