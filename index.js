@@ -62,9 +62,9 @@ export default () => {
       app.add(newMesh);
       newMesh.updateMatrixWorld();
 
-      let physicsId = physics.addGeometry(newMesh);
-      physicsIds.push(physicsId);
-      newMesh.physicsId = physicsId;
+      // let physicsId = physics.addGeometry(newMesh);
+      // physicsIds.push(physicsId);
+      // newMesh.physicsId = physicsId;
 
       
     }
