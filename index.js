@@ -99,13 +99,13 @@ export default () => {
       
 
       // asteroids[1].physicsObject.quaternion.premultiply(q1);
-      asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + Math.sin(timestamp) * 3);
+      asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + Math.sin(timestamp));
       asteroids[1].physicsObject.updateMatrixWorld();
       asteroids[1].physicsObject.needsUpdate = true;
 
       asteroids[1].mesh.position.copy(asteroids[1].physicsObject.position);
 
-      
+      console.log(timeDiff, timestamp);
     }
 
     // Resets character position to spawn position
