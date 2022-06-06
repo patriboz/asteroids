@@ -41,9 +41,9 @@ export default () => {
       app.add(newMesh);
       newMesh.updateMatrixWorld();
 
-      const physicsId = physics.addGeometry(newMesh);
-      physicsIds.push(physicsId);
-      newMesh.physicsId = physicsId;
+      // const physicsId = physics.addGeometry(newMesh);
+      // physicsIds.push(physicsId);
+      // newMesh.physicsId = physicsId;
 
       
     }
