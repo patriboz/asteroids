@@ -71,8 +71,8 @@ export default () => {
       physicsIds.push(physicsId);
       newMesh.physicsId = physicsId;
 
+      asteroid.mesh = newMesh;
       asteroid.physicsObject = physicsId;
-      physics.setVelocity(physicsId, new THREE.Vector3(20, 0, 0), true);
     }
     console.log(asteroids);
     
@@ -99,6 +99,8 @@ export default () => {
       asteroids[1].physicsObject.quaternion.premultiply(q1);
       asteroids[1].physicsObject.updateMatrixWorld();
       asteroids[1].physicsObject.needsUpdate = true;
+
+      asteroids[1].mesh.quaternion.copy(asteroids[1].physicsObject.quaternion);
 
       console.log(asteroids[1].physicsObject.quaternion);
     }
