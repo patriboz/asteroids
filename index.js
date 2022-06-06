@@ -43,7 +43,7 @@ export default () => {
     }
   ];
 
-  const q1 = new THREE.Quaternion(0, 0.0087265, 0, 0.9999619);
+  const q1 = new THREE.Quaternion(0.0087262, 0.0087262, 0.0000762, 0.9999238);
   const v1 = new THREE.Vector3(1, 0, 0);
 
   (async () => {
