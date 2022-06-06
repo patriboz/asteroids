@@ -69,9 +69,10 @@ export default () => {
       physicsIds.push(physicsId);
       newMesh.physicsId = physicsId;
 
-      physics.setVelocity(physicsId, new THREE.Vector3(20, 0, 0), true);
+      asteroid.physicsObject = physicsId;
+      //physics.setVelocity(physicsId, new THREE.Vector3(20, 0, 0), true);
     }
-
+    console.log(asteroids);
     
     app.updateMatrixWorld();
   })();
