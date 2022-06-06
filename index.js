@@ -50,7 +50,7 @@ export default () => {
       physicsIds.push(physicsId);
       newMesh.physicsId = physicsId;
 
-      
+      physics.setAngularVelocity(newMesh, new THREE.Vector3(1, 0, 0), true);
     }
 
     
@@ -79,7 +79,7 @@ export default () => {
     }
 
     // Resets character position to spawn position
-    if(localPlayer.position.y < -10) {
+    if(localPlayer.position.y < -50) {
       physics.setCharacterControllerPosition(localPlayer.characterController, defaultSpawn);
     }
 
