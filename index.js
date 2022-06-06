@@ -94,9 +94,9 @@ export default () => {
   useFrame(({ timeDiff, timestamp }) => {
 
     if(asteroids[1].physicsObject) {
-      //physics.addTorque(asteroids[1].physicsObject, v1, true);
+      physics.addTorque(asteroids[1].physicsObject, v1, true);
 
-      asteroids[1].physicsObject.quaternion.premultiply(q1);
+      //asteroids[1].physicsObject.quaternion.premultiply(q1);
       asteroids[1].physicsObject.updateMatrixWorld();
       asteroids[1].physicsObject.needsUpdate = true;
 
