@@ -31,6 +31,7 @@ export default () => {
     });
 
     const mesh = gltf.scene;
+    console.log(mesh);
 
     for(const asteroid of asteroids) {
       let newMesh = mesh.clone();
@@ -40,7 +41,7 @@ export default () => {
 
       app.add(newMesh);
       newMesh.updateMatrixWorld();
-
+console.log(newMesh);
       // const physicsId = physics.addGeometry(newMesh);
       // physicsIds.push(physicsId);
       // newMesh.physicsId = physicsId;
