@@ -24,7 +24,13 @@ export default () => {
         gltfLoader.load(url, accept, function onprogress() {}, reject);
         
     });
-    app.add(gltf.scene);
+
+    const mesh = gltf.scene;
+
+    const physicsId = physics.addGeometry(mesh);
+    physicsIds.push(physicsId);
+    mesh.physicsId = physicsId;
+    app.add(mesh);
     app.updateMatrixWorld();
 })();
 
