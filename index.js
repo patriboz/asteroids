@@ -37,14 +37,14 @@ export default () => {
       let newMesh = mesh.clone();
       newMesh.position.set(asteroid.position);
       newMesh.applyQuaternion(asteroid.quat);
-      newMesh.scale.set(asteroid.scale);
+      //newMesh.scale.set(asteroid.scale);
 
       app.add(newMesh);
       newMesh.updateMatrixWorld();
 console.log(newMesh);
-      // const physicsId = physics.addGeometry(newMesh);
-      // physicsIds.push(physicsId);
-      // newMesh.physicsId = physicsId;
+      const physicsId = physics.addGeometry(newMesh);
+      physicsIds.push(physicsId);
+      newMesh.physicsId = physicsId;
 
       
     }
