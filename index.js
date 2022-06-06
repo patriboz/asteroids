@@ -8,6 +8,7 @@ const baseUrl = import.meta.url.replace(/(\/)[^\/\\]*$/, '$1');
 
 export default () => {
   const app = useApp();
+  app.name = 'Asteroid Game';
   const { renderer, camera } = useInternals();
   const localPlayer = useLocalPlayer();
   const physics = usePhysics();
@@ -38,25 +39,35 @@ export default () => {
     physicsIds.push(physicsId);
     mesh.physicsId = physicsId;
     
-    app.add(mesh);
+
+    const mesh2 = mesh.clone();
+    mesh2.scale.set(0.04, 0.04, 0.04);
+    mesh2.position.set(10, 0, 0);
+    physicsId = physics.addGeometry(mesh2);
+    physicsIds.push(physicsId);
+    mesh.physicsId = physicsId;
+
+
+    app.add(mesh, mesh2);
 //
-    console.log(mesh);
+    
 
-    for(const asteroid of asteroids) {
-      let newMesh = mesh.clone();
-      newMesh.position.set(asteroid.position);
-      newMesh.applyQuaternion(asteroid.quat);
-      //newMesh.scale.set(asteroid.scale);
 
-      app.add(newMesh);
-      newMesh.updateMatrixWorld();
-console.log(newMesh);
-      const physicsId = physics.addGeometry(newMesh);
-      physicsIds.push(physicsId);
-      newMesh.physicsId = physicsId;
+//     for(const asteroid of asteroids) {
+//       let newMesh = mesh.clone();
+//       newMesh.position.set(asteroid.position);
+//       newMesh.applyQuaternion(asteroid.quat);
+//       //newMesh.scale.set(asteroid.scale);
+
+//       app.add(newMesh);
+//       newMesh.updateMatrixWorld();
+
+//       const physicsId = physics.addGeometry(newMesh);
+//       physicsIds.push(physicsId);
+//       newMesh.physicsId = physicsId;
 
       
-    }
+//     }
 
     
     app.updateMatrixWorld();
