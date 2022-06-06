@@ -18,7 +18,7 @@ export default () => {
   let asteroids = [
     {position: new THREE.Vector3(0, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)},
     {position: new THREE.Vector3(5, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)},
-    {position: new THREE.Vector3(10, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)},
+    {position: new THREE.Vector3(10, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)}
   ];
   
 
@@ -33,7 +33,7 @@ export default () => {
     const mesh = gltf.scene;
 
     for(const asteroid of asteroids) {
-      const newMesh = mesh.clone();
+      let newMesh = mesh.clone();
       newMesh.position.set(asteroid.position);
       newMesh.applyQuaternion(asteroid.quat);
       newMesh.scale.set(asteroid.scale);
