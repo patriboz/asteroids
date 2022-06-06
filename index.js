@@ -19,7 +19,9 @@ export default () => {
   let asteroids = [
     {position: new THREE.Vector3(0, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)},
     {position: new THREE.Vector3(10, 0, 0), quat: new THREE.Quaternion(0, 0.7071067811865475, 0, 0.7071067811865476), scale: new THREE.Vector3(0.03, 0.03, 0.03)},
-    {position: new THREE.Vector3(20, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.02, 0.02, 0.02)}
+    {position: new THREE.Vector3(20, 0, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.02, 0.02, 0.02)},
+    {position: new THREE.Vector3(35, -10, 5), quat: new THREE.Quaternion(0, 1, 0, 0), scale: new THREE.Vector3(0.05, 0.03, 0.05)},
+    {position: new THREE.Vector3(50, -30, 0), quat: new THREE.Quaternion(0, 0, 0, 1), scale: new THREE.Vector3(0.04, 0.04, 0.04)}
   ];
   
 
@@ -36,11 +38,11 @@ export default () => {
     for(const asteroid of asteroids) {
     
       let newMesh = mesh.clone();
+
       newMesh.position.set(asteroid.position.x, asteroid.position.y, asteroid.position.z);
       newMesh.quaternion.premultiply(asteroid.quat);
-      //newMesh.applyQuaternion(asteroid.quat.x, asteroid.quat.y, asteroid.quat.z, asteroid.quat.w);
       newMesh.scale.set(asteroid.scale.x, asteroid.scale.y, asteroid.scale.z);
-console.log(newMesh);
+
       app.add(newMesh);
       newMesh.updateMatrixWorld();
 
