@@ -97,7 +97,7 @@ export default () => {
 
     if(asteroids[1].physicsObject) {
       
-      delta = Math.sin(timestamp / 500) - 0.5;
+      delta = Math.sin(timestamp / 500);
 
       // asteroids[1].physicsObject.quaternion.premultiply(q1);
       asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + delta);
@@ -106,7 +106,7 @@ export default () => {
 
       asteroids[1].mesh.position.copy(asteroids[1].physicsObject.position);
 
-      console.log(timeDiff, timestamp);
+      console.log(delta);
     }
 
     // Resets character position to spawn position
