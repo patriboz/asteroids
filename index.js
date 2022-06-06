@@ -18,7 +18,7 @@ export default () => {
   
 
   (async () => {
-    const url = `/patrick/assets/rock/scene.gltf`; // must prefix "/bride-game" when working locally
+    const url = `/landscape/assets/rock/scene.gltf`; // must prefix "/bride-game" when working locally
     let gltf = await new Promise((accept, reject) => {
         const {gltfLoader} = useLoaders();
         gltfLoader.load(url, accept, function onprogress() {}, reject);
