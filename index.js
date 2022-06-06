@@ -56,7 +56,7 @@ export default () => {
     //for(const asteroid of asteroids) {
     asteroids.forEach(asteroid => {
       let newMesh = mesh.clone();
-      newMesh.position = asteroid.position;
+      newMesh.position.set(asteroid.position.x, asteroid.position.y, asteroid.position.z);
       console.log(newMesh);
       //newMesh.applyQuaternion(asteroid.quat);
       //newMesh.scale.set(asteroid.scale);
