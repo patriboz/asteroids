@@ -44,31 +44,11 @@ useFrame(({ timeDiff, timestamp }) => {
 
     
             
-  //   const downQuat = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI*0.5);
-  //   const resultDown = physics.raycast(localPlayer.position, downQuat);
-
-  //   if(resultDown && localPlayer.characterPhysics.lastGroundedTime === timestamp) {
-  //     let foundObj = metaversefile.getPhysicsObjectByPhysicsId(resultDown.objectId);
-  //     if(foundObj) {
-  //       if(foundObj.glassObj) {
-  //         if(foundObj.glassObj.breakable) {
-  //           if(foundObj.glassObj.audio) {
-  //             foundObj.glassObj.audio.play();
-  //             foundObj.glassObj.visible = false;
-  //             physics.disableGeometry(foundObj);
-  //             physics.disableGeometryQueries(foundObj);
-  //           }
-
-            
-  //         }
-  //       }
-  //     }
-
-  //   }
-  // }
+    
+  }
 
   // Resets character position to spawn position
-  if(localPlayer.position.y < -25) {
+  if(localPlayer.position.y < -10) {
     physics.setCharacterControllerPosition(localPlayer.characterController, defaultSpawn);
   }
 
