@@ -91,15 +91,16 @@ export default () => {
 
 
 
-  
+  let delta = 0;  
 
   useFrame(({ timeDiff, timestamp }) => {
 
     if(asteroids[1].physicsObject) {
       
+      delta = Math.sin(timestamp / 500) - 0.5;
 
       // asteroids[1].physicsObject.quaternion.premultiply(q1);
-      asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + Math.sin(timestamp / 500));
+      asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + delta);
       asteroids[1].physicsObject.updateMatrixWorld();
       asteroids[1].physicsObject.needsUpdate = true;
 
