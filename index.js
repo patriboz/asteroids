@@ -60,9 +60,9 @@ export default () => {
     
       let newMesh = mesh.clone();
 
-      newMesh.position.set(asteroid.position.x, asteroid.position.y, asteroid.position.z);
+      newMesh.position.copy(asteroid.position);
       newMesh.quaternion.premultiply(asteroid.quat);
-      newMesh.scale.set(asteroid.scale.x, asteroid.scale.y, asteroid.scale.z);
+      newMesh.scale.copy(asteroid.scale);
 
       app.add(newMesh);
       newMesh.updateMatrixWorld();
