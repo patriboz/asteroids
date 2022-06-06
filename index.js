@@ -53,7 +53,8 @@ export default () => {
     
 
 
-    for(const asteroid of asteroids) {
+    //for(const asteroid of asteroids) {
+    asteroids.forEach(asteroid => {
       let newMesh = mesh.clone();
       newMesh.position.set(asteroid.position);
       //newMesh.applyQuaternion(asteroid.quat);
@@ -67,7 +68,7 @@ export default () => {
       // newMesh.physicsId = physicsId;
 
       
-    }
+    });
 
     
     app.updateMatrixWorld();
