@@ -69,7 +69,7 @@ export default () => {
       physicsIds.push(physicsId);
       newMesh.physicsId = physicsId;
 
-      physics.setAngularVelocity(physicsId, new THREE.Vector3(20, 0, 0), true);
+      physics.setVelocity(physicsId, new THREE.Vector3(20, 0, 0), true);
     }
 
     
