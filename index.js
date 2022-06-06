@@ -42,6 +42,8 @@ export default () => {
       scale: new THREE.Vector3(0.04, 0.04, 0.04)
     }
   ];
+
+  const q1 = new THREE.Quaternion(0, 0.0087265, 0, 0.9999619);
   
 
   (async () => {
@@ -91,13 +93,8 @@ export default () => {
 
   useFrame(({ timeDiff, timestamp }) => {
 
+    asteroids[1].physicsObject.quaternion.premultiply(q1);
     
-    if(localPlayer.avatar) {
-
-      
-              
-      
-    }
 
     // Resets character position to spawn position
     if(localPlayer.position.y < -50) {
