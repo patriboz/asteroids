@@ -13,12 +13,12 @@ export default () => {
   const physics = usePhysics();
   const textureLoader = new THREE.TextureLoader();
 
-  const defaultSpawn = new THREE.Vector3(0, 100, 0);
+  const defaultSpawn = new THREE.Vector3(0, 5, 0);
   let physicsIds = [];
   
 
   (async () => {
-    const url = `https://patriboz.github.io/landscape/assets/rock/scene.gltf`; // must prefix "/bride-game" when working locally
+    const url = `https://patriboz.github.io/asteroids/assets/rock/scene.gltf`; // todo: relative path?
     let gltf = await new Promise((accept, reject) => {
         const {gltfLoader} = useLoaders();
         gltfLoader.load(url, accept, function onprogress() {}, reject);
@@ -26,7 +26,7 @@ export default () => {
     });
 
     const mesh = gltf.scene;
-    mesh.scale.set(0.1, 0.1, 0.1);
+    mesh.scale.set(0.01, 0.01, 0.01);
 
     const physicsId = physics.addGeometry(mesh);
     physicsIds.push(physicsId);
