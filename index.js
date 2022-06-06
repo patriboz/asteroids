@@ -33,22 +33,22 @@ export default () => {
 
     let mesh = gltf.scene;
 //
-    mesh.scale.set(0.04, 0.04, 0.04);
+    // mesh.scale.set(0.04, 0.04, 0.04);
 
-    let physicsId = physics.addGeometry(mesh);
-    physicsIds.push(physicsId);
-    mesh.physicsId = physicsId;
+    // let physicsId = physics.addGeometry(mesh);
+    // physicsIds.push(physicsId);
+    // mesh.physicsId = physicsId;
     
 
-    let mesh2 = mesh.clone();
-    mesh2.scale.set(0.04, 0.04, 0.04);
-    mesh2.position.set(10, 0, 0);
-    physicsId = physics.addGeometry(mesh2);
-    physicsIds.push(physicsId);
-    mesh2.physicsId = physicsId;
+    // let mesh2 = mesh.clone();
+    // mesh2.scale.set(0.04, 0.04, 0.04);
+    // mesh2.position.set(10, 0, 0);
+    // physicsId = physics.addGeometry(mesh2);
+    // physicsIds.push(physicsId);
+    // mesh2.physicsId = physicsId;
 
 
-    app.add(mesh, mesh2);
+    // app.add(mesh, mesh2);
 //
     
 
