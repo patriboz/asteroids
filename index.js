@@ -45,7 +45,7 @@ export default () => {
     mesh2.position.set(10, 0, 0);
     physicsId = physics.addGeometry(mesh2);
     physicsIds.push(physicsId);
-    mesh.physicsId = physicsId;
+    mesh2.physicsId = physicsId;
 
 
     app.add(mesh, mesh2);
@@ -53,21 +53,21 @@ export default () => {
     
 
 
-//     for(const asteroid of asteroids) {
-//       let newMesh = mesh.clone();
-//       newMesh.position.set(asteroid.position);
-//       newMesh.applyQuaternion(asteroid.quat);
-//       //newMesh.scale.set(asteroid.scale);
+    for(const asteroid of asteroids) {
+      let newMesh = mesh.clone();
+      newMesh.position.set(asteroid.position);
+      //newMesh.applyQuaternion(asteroid.quat);
+      //newMesh.scale.set(asteroid.scale);
 
-//       app.add(newMesh);
-//       newMesh.updateMatrixWorld();
+      app.add(newMesh);
+      newMesh.updateMatrixWorld();
 
-//       const physicsId = physics.addGeometry(newMesh);
-//       physicsIds.push(physicsId);
-//       newMesh.physicsId = physicsId;
+      let physicsId = physics.addGeometry(newMesh);
+      physicsIds.push(physicsId);
+      newMesh.physicsId = physicsId;
 
       
-//     }
+    }
 
     
     app.updateMatrixWorld();
