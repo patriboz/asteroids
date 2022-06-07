@@ -131,7 +131,7 @@ export default () => {
       newMesh.applyMatrix4(localMatrix.compose(
         new THREE.Vector3(rndPos(20, 300), rndPos(20, 300), rndPos(20, 300)), 
         new THREE.Quaternion(0, 0, 0, 1), 
-        new THREE.Vector3(Math.random() * 10, Math.random() * 10, Math.random() * 10)
+        new THREE.Vector3(Math.random() / 10, Math.random() / 10, Math.random() / 10)
       ));
       app.add(newMesh);
       newMesh.updateMatrixWorld();
