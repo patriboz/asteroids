@@ -126,7 +126,7 @@ export default () => {
       }
     };
 
-    for(let i = 0; i < 50; i++) {
+    for(let i = 0; i < 500; i++) {
       let newMesh = mesh.clone();
       newMesh.applyMatrix4(localMatrix.compose(
         new THREE.Vector3(rndPos(20, 300), rndPos(20, 300), rndPos(20, 300)), 
