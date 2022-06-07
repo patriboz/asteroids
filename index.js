@@ -129,7 +129,7 @@ export default () => {
     for(let i = 0; i < 50; i++) {
       let newMesh = mesh.clone();
       newMesh.applyMatrix4(localMatrix.compose(
-        new THREE.Vector3(rndPos(20, 300), rndPos(20, 300), rndPos(20, 300)), 
+        new THREE.Vector3(rndPos(30, 200), rndPos(30, 200), rndPos(30, 200)), 
         new THREE.Quaternion(0, 0, 0, 1), 
         new THREE.Vector3(Math.random() / 10, Math.random() / 10, Math.random() / 10)
       ));
