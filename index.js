@@ -62,9 +62,6 @@ export default () => {
       let newMesh = mesh.clone();
 
       newMesh.applyMatrix4(localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale));
-      // newMesh.position.copy(asteroid.position);
-      // newMesh.quaternion.premultiply(asteroid.quat);
-      // newMesh.scale.copy(asteroid.scale);
 
       app.add(newMesh);
       newMesh.updateMatrixWorld();
@@ -75,11 +72,8 @@ export default () => {
 
       asteroid.mesh = newMesh;
       asteroid.physicsObject = physicsId;
-
-      
     }
-    console.log(asteroids);
-    
+    createAsteroidField(mesh);
     app.updateMatrixWorld();
   })();
 
@@ -119,7 +113,30 @@ export default () => {
     app.updateMatrixWorld();
   });
 
+  const createAsteroidField = (mesh) => {
+    
+    const rndPos = (min, scale) => {
+      let invalid = true;
+      while(invalid) {
+        const n = (Math.random() - 0.5) * scale;
+        if(n > 0 && n > min || n < 0 && n < min) {
+          invalid = false;
+          return n;
+        }
+      }
+    };
 
+    for(let i = 0; i < 50; i++) {
+      let newMesh = mesh.clone();
+      newMesh.applyMatrix4(localMatrix.compose(
+        new THREE.Vector3(rndPos(20, 300), rndPos(20, 300), rndPos(20, 300)), 
+        new THREE.Quaternion(0, 0, 0, 1), 
+        new THREE.Vector3(Math.random() * 10, Math.random() * 10, Math.random() * 10)
+      ));
+      app.add(newMesh);
+      newMesh.updateMatrixWorld();
+    }
+  };
 
   return app;
 };
