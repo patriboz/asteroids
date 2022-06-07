@@ -43,6 +43,7 @@ export default () => {
     }
   ];
 
+  const localMatrix = new THREE.Matrix4();
   const q1 = new THREE.Quaternion(0.0087262, 0.0087262, 0.0000762, 0.9999238);
   const v1 = new THREE.Vector3(1, 0, 0);
 
@@ -60,9 +61,10 @@ export default () => {
     
       let newMesh = mesh.clone();
 
-      newMesh.position.copy(asteroid.position);
-      newMesh.quaternion.premultiply(asteroid.quat);
-      newMesh.scale.copy(asteroid.scale);
+      newMesh.applyMatrix4(localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale));
+      // newMesh.position.copy(asteroid.position);
+      // newMesh.quaternion.premultiply(asteroid.quat);
+      // newMesh.scale.copy(asteroid.scale);
 
       app.add(newMesh);
       newMesh.updateMatrixWorld();
