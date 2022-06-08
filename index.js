@@ -12,9 +12,35 @@ export default () => {
   const { renderer, camera } = useInternals();
   const localPlayer = useLocalPlayer();
   const physics = usePhysics();
+  let physicsIds = [];
+
+  const localVector = new THREE.Vector3();
+  const localVector2 = new THREE.Vector3();
+  const localQuaternion = new THREE.Quaternion();
+  const localMatrix = new THREE.Matrix4();
+
+  class Asteroid {
+    constructor(app, mesh, localMatrix) {
+      this.app = app;
+      this.mesh = mesh.clone();
+      this.mesh.applyMatrix4(localMatrix);
+      this.app.add(this.mesh);
+      this.mesh.updateMatrixWorld();
+    }
+  }
+
+  class PhysicalAsteroid extends Asteroid {
+    constructor(app, mesh, localMatrix, physics, physicsIds) {
+      super(app, mesh, localMatrix);
+
+      this.physicsId = physics.addGeometry(this.mesh);
+      physicsIds.push(this.physicsId);
+    }
+  }
 
   const defaultSpawn = new THREE.Vector3(0, 5, 0);
-  let physicsIds = [];
+  
+
   let asteroids = [
     {
       position: new THREE.Vector3(0, 0, 0), 
@@ -43,20 +69,7 @@ export default () => {
     }
   ];
 
-  const localVector = new THREE.Vector3();
-  const localVector2 = new THREE.Vector3();
-  const localQuaternion = new THREE.Quaternion();
-  const localMatrix = new THREE.Matrix4();
-
-  class Asteroid {
-    constructor(app, mesh, localMatrix) {
-      this.app = app;
-      this.mesh = mesh.clone();
-      this.mesh.applyMatrix4(localMatrix);
-      this.app.add(this.mesh);
-      this.mesh.updateMatrixWorld();
-    }
-  }
+  
 
 
   (async () => {
@@ -71,19 +84,22 @@ export default () => {
 
     for(const asteroid of asteroids) {
     
-      let newMesh = mesh.clone();
+      // let newMesh = mesh.clone();
 
-      newMesh.applyMatrix4(localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale));
+      // newMesh.applyMatrix4(localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale));
 
-      app.add(newMesh);
-      newMesh.updateMatrixWorld();
+      // app.add(newMesh);
+      // newMesh.updateMatrixWorld();
 
-      let physicsId = physics.addGeometry(newMesh);
-      physicsIds.push(physicsId);
-      newMesh.physicsId = physicsId;
+      // let physicsId = physics.addGeometry(newMesh);
+      // physicsIds.push(physicsId);
+      // newMesh.physicsId = physicsId;
 
-      asteroid.mesh = newMesh;
-      asteroid.physicsObject = physicsId;
+      // asteroid.mesh = newMesh;
+      // asteroid.physicsObject = physicsId;
+
+      localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale);
+      new PhysicalAsteroid(app, mesh, localMatrix, physics, physicsIds);
     }
     createAsteroidField(mesh);
     app.updateMatrixWorld();
@@ -131,23 +147,12 @@ export default () => {
 
 
 
-
+console.log(app);
+console.log(metaversefile);
 
 
   const createAsteroidField = (mesh) => {
-    
-    
-
     for(let i = 0; i < 50; i++) {
-      // let newMesh = mesh.clone();
-      // newMesh.applyMatrix4(localMatrix.compose(
-      //   localVector.randomDirection().multiplyScalar(100).addScalar(30),
-      //   localQuaternion.random(),
-      //   localVector2.random().divideScalar(10)
-      // ));
-      // app.add(newMesh);
-      // newMesh.updateMatrixWorld();
-      
       localMatrix.compose(
         localVector.randomDirection().multiplyScalar(100).addScalar(30),
         localQuaternion.random(),
