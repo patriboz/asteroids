@@ -115,15 +115,23 @@ export default () => {
 
   const createAsteroidField = (mesh) => {
     
-    const rndPos = (min, scale) => {
-      let invalid = true;
-      while(invalid) {
-        const n = (Math.random() - 0.5) * scale;
-        if(n > 0 && n > min || n < 0 && n < min) {
-          invalid = false;
-          return n;
-        }
+    const rndPos = (min, max) => {
+
+      const p = (Math.random() - 0.5) * max;
+      if(p < 0) {
+        p -= min;
+      } else {
+        p += min;
       }
+      return p;
+      // let invalid = true;
+      // while(invalid) {
+      //   const n = (Math.random() - 0.5) * max;
+      //   if(n > 0 && n > min || n < 0 && n < min) {
+      //     invalid = false;
+      //     return n;
+      //   }
+      // }
     };
 
     for(let i = 0; i < 50; i++) {
