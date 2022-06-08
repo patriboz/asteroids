@@ -43,9 +43,10 @@ export default () => {
     }
   ];
 
+  const localVector = new THREE.Vector3();
+  const localVector2 = new THREE.Vector3();
+  const localQuaternion = new THREE.Quaternion();
   const localMatrix = new THREE.Matrix4();
-  const q1 = new THREE.Quaternion(0.0087262, 0.0087262, 0.0000762, 0.9999238);
-  const v1 = new THREE.Vector3(1, 0, 0);
 
   class Asteroid {
     constructor(app, mesh, localMatrix) {
@@ -135,28 +136,18 @@ export default () => {
 
   const createAsteroidField = (mesh) => {
     
-    const rndPos = (min, max) => {
-      const p = (Math.random() - 0.5) * max;
-      if(p < 0) {
-        p -= min;
-      } else {
-        p += min;
-      }
-      return p;
-    };
+    
 
     for(let i = 0; i < 50; i++) {
       let newMesh = mesh.clone();
       newMesh.applyMatrix4(localMatrix.compose(
-        //new THREE.Vector3(rndPos(30, 200), rndPos(30, 200), rndPos(30, 200)),
-        new THREE.Vector3().randomDirection().multiplyScalar(100).addScalar(30),
-        new THREE.Quaternion().random(),
-        //new THREE.Vector3(Math.random() / 10, Math.random() / 10, Math.random() / 10)
-        new THREE.Vector3().random().divideScalar(10)
+        localVector.randomDirection().multiplyScalar(100).addScalar(30),
+        localQuaternion.random(),
+        localVector2.random().divideScalar(10)
       ));
       app.add(newMesh);
       newMesh.updateMatrixWorld();
-      console.log(newMesh);
+      
     }
   };
 
