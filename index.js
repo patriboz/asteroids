@@ -42,7 +42,7 @@ export default () => {
     constructor(app, mesh, localMatrix, movingAsteroids) {
       super(app, mesh, localMatrix);
 
-      this.velocityX = Math.random() / 5;
+      this.velocityX = Math.random();
       movingAsteroids.push(this);
     }
     move() {
@@ -160,7 +160,7 @@ console.log(metaversefile);
   };
 
   const createAsteroidField = (mesh) => {
-    for(let i = 0; i < 50; i++) {
+    for(let i = 0; i < 100; i++) {
       localMatrix.compose(
         localVector.randomDirection().multiplyScalar(100).addScalar(30),
         localQuaternion.random(),
