@@ -38,8 +38,19 @@ export default () => {
     }
   }
 
+  class MovingAsteroid extends Asteroid {
+    constructor(app, mesh, localMatrix, movingAsteroids) {
+      super(app, mesh, localMatrix);
+
+      movingAsteroids.push(this);
+    }
+    move() {
+      this.mesh.position.setX(this.mesh.position.x + 0.01);
+    }
+  }
+
   const defaultSpawn = new THREE.Vector3(0, 5, 0);
-  
+  const movingAsteroids = [];
 
   let asteroids = [
     {
@@ -83,24 +94,10 @@ export default () => {
     let mesh = gltf.scene;
 
     for(const asteroid of asteroids) {
-    
-      // let newMesh = mesh.clone();
-
-      // newMesh.applyMatrix4(localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale));
-
-      // app.add(newMesh);
-      // newMesh.updateMatrixWorld();
-
-      // let physicsId = physics.addGeometry(newMesh);
-      // physicsIds.push(physicsId);
-      // newMesh.physicsId = physicsId;
-
-      // asteroid.mesh = newMesh;
-      // asteroid.physicsObject = physicsId;
-
       localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale);
       new PhysicalAsteroid(app, mesh, localMatrix, physics, physicsIds);
     }
+
     createAsteroidField(mesh);
     app.updateMatrixWorld();
   })();
@@ -123,6 +120,8 @@ export default () => {
 
   useFrame(({ timeDiff, timestamp }) => {
 
+    moveAsteroids();
+
     // if(asteroids[1].physicsObject) {
       
     //   delta = 0.1 * Math.sin(timestamp / 500);
@@ -130,7 +129,7 @@ export default () => {
     //   // asteroids[1].physicsObject.quaternion.premultiply(q1);
     //   asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + delta);
     //   asteroids[1].physicsObject.updateMatrixWorld();
-    //   asteroids[1].physicsObject.needsUpdate = true;
+    //   
 
     //   asteroids[1].mesh.position.copy(asteroids[1].physicsObject.position);
 
@@ -150,6 +149,11 @@ export default () => {
 console.log(app);
 console.log(metaversefile);
 
+  const moveAsteroids = () => {
+    for (const asteroid of movingAsteroids) {
+      asteroid.move();
+    }
+  };
 
   const createAsteroidField = (mesh) => {
     for(let i = 0; i < 50; i++) {
@@ -158,7 +162,7 @@ console.log(metaversefile);
         localQuaternion.random(),
         localVector2.random().divideScalar(10)
       );
-      new Asteroid(app, mesh, localMatrix);
+      new MovingAsteroid(app, mesh, localMatrix, movingAsteroids);
     }
   };
 
