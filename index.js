@@ -43,6 +43,7 @@ export default () => {
       super(app, mesh, localMatrix);
 
       this.velocityX = Math.random() ** 2;
+      this.rotation = new THREE.Quaternion().random();
       movingAsteroids.push(this);
     }
     move() {
@@ -50,6 +51,7 @@ export default () => {
         this.mesh.position.setX(-300);
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
+      this.mesh.quaternion.premultiply(this.rotation);
     }
   }
 
