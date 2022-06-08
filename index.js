@@ -16,6 +16,7 @@ export default () => {
 
   const localVector = new THREE.Vector3();
   const localVector2 = new THREE.Vector3();
+  const localEuler = new THREE.Euler();
   const localQuaternion = new THREE.Quaternion();
   const localMatrix = new THREE.Matrix4();
 
@@ -39,11 +40,12 @@ export default () => {
   }
 
   class MovingAsteroid extends Asteroid {
-    constructor(app, mesh, localMatrix, movingAsteroids) {
+    constructor(app, mesh, localMatrix, localEuler, movingAsteroids) {
       super(app, mesh, localMatrix);
 
       this.velocityX = Math.random() ** 2;
-      this.rotation = new THREE.Quaternion().random();
+      localEuler.set(Math.random() / 10, Math.random() / 10, Math.random() / 10, 'XYZ');
+      this.rotation = new THREE.Quaternion().setFromEuler(localEuler);
       movingAsteroids.push(this);
     }
     move() {
@@ -177,7 +179,7 @@ console.log(metaversefile);
         localQuaternion.random(),
         localVector2.random().divideScalar(10)
       );
-      new MovingAsteroid(app, mesh, localMatrix, movingAsteroids);
+      new MovingAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids);
     }
   };
 
