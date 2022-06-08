@@ -47,8 +47,19 @@ export default () => {
   const q1 = new THREE.Quaternion(0.0087262, 0.0087262, 0.0000762, 0.9999238);
   const v1 = new THREE.Vector3(1, 0, 0);
 
+  class Asteroid {
+    constructor(app, mesh, localMatrix) {
+      this.app = app;
+      this.mesh = mesh.clone();
+      this.mesh.applyMatrix4(localMatrix);
+      this.app.add(this.mesh);
+      this.mesh.updateMatrixWorld();
+    }
+  }
+
+
   (async () => {
-    const url = `https://patriboz.github.io/asteroids/assets/rock/scene.gltf`; // todo: relative path?
+    const url = `https://patriboz.github.io/asteroids/assets/rock/scene.gltf`;
     let gltf = await new Promise((accept, reject) => {
         const {gltfLoader} = useLoaders();
         gltfLoader.load(url, accept, function onprogress() {}, reject);
@@ -87,6 +98,10 @@ export default () => {
 
 
 
+
+
+
+
   let delta = 0;  
 
   useFrame(({ timeDiff, timestamp }) => {
@@ -113,10 +128,14 @@ export default () => {
     app.updateMatrixWorld();
   });
 
+
+
+
+
+
   const createAsteroidField = (mesh) => {
     
     const rndPos = (min, max) => {
-
       const p = (Math.random() - 0.5) * max;
       if(p < 0) {
         p -= min;
@@ -124,20 +143,13 @@ export default () => {
         p += min;
       }
       return p;
-      // let invalid = true;
-      // while(invalid) {
-      //   const n = (Math.random() - 0.5) * max;
-      //   if(n > 0 && n > min || n < 0 && n < min) {
-      //     invalid = false;
-      //     return n;
-      //   }
-      // }
     };
 
     for(let i = 0; i < 50; i++) {
       let newMesh = mesh.clone();
       newMesh.applyMatrix4(localMatrix.compose(
-        new THREE.Vector3(rndPos(30, 200), rndPos(30, 200), rndPos(30, 200)), 
+        //new THREE.Vector3(rndPos(30, 200), rndPos(30, 200), rndPos(30, 200)),
+        new THREE.Vector3.randomDirection().multiplyScalar(200).addScalar(30),
         new THREE.Quaternion().random(),
         new THREE.Vector3(Math.random() / 10, Math.random() / 10, Math.random() / 10)
       ));
