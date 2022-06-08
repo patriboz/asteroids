@@ -115,34 +115,11 @@ export default () => {
     for (const physicsId of physicsIds) {
       physics.removeGeometry(physicsId);
     }
-  });
-
-
-
-
-
-
-
-
-  let delta = 0;  
+  });  
 
   useFrame(({ timeDiff, timestamp }) => {
 
     moveAsteroids();
-
-    // if(asteroids[1].physicsObject) {
-      
-    //   delta = 0.1 * Math.sin(timestamp / 500);
-
-    //   // asteroids[1].physicsObject.quaternion.premultiply(q1);
-    //   asteroids[1].physicsObject.position.setX(asteroids[1].physicsObject.position.x + delta);
-    //   asteroids[1].physicsObject.updateMatrixWorld();
-    //   
-
-    //   asteroids[1].mesh.position.copy(asteroids[1].physicsObject.position);
-
-    //   console.log(delta);
-    // }
 
     // Resets character position to spawn position
     if(localPlayer.position.y < -50) {
@@ -153,9 +130,6 @@ export default () => {
   });
 
 
-
-console.log(app);
-console.log(metaversefile);
 
   const moveAsteroids = () => {
     for (const asteroid of movingAsteroids) {
