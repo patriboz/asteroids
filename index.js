@@ -155,6 +155,7 @@ export default () => {
       ));
       app.add(newMesh);
       newMesh.updateMatrixWorld();
+      console.log(newMesh);
     }
   };
 
