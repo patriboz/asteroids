@@ -44,7 +44,7 @@ export default () => {
       super(app, mesh, localMatrix);
 
       this.velocityX = Math.random() ** 2;
-      localEuler.set(Math.random() / 10, Math.random() / 10, Math.random() / 10, 'XYZ');
+      localEuler.set(Math.random() / 100, Math.random() / 100, Math.random() / 100, 'XYZ');
       this.rotation = new THREE.Quaternion().setFromEuler(localEuler);
       movingAsteroids.push(this);
     }
