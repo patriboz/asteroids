@@ -42,7 +42,7 @@ export default () => {
     constructor(app, mesh, localMatrix, movingAsteroids) {
       super(app, mesh, localMatrix);
 
-      this.velocityX = Math.random();
+      this.velocityX = Math.random() ** 2;
       movingAsteroids.push(this);
     }
     move() {
