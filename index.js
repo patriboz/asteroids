@@ -166,6 +166,15 @@ console.log(metaversefile);
         localQuaternion.random(),
         localVector2.random().divideScalar(10)
       );
+      new Asteroid(app, mesh, localMatrix);
+    }
+
+    for(let i = 0; i < 100; i++) {
+      localMatrix.compose(
+        localVector.randomDirection().multiplyScalar(100).addScalar(30),
+        localQuaternion.random(),
+        localVector2.random().divideScalar(10)
+      );
       new MovingAsteroid(app, mesh, localMatrix, movingAsteroids);
     }
   };
