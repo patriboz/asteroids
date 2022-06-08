@@ -139,15 +139,21 @@ export default () => {
     
 
     for(let i = 0; i < 50; i++) {
-      let newMesh = mesh.clone();
-      newMesh.applyMatrix4(localMatrix.compose(
+      // let newMesh = mesh.clone();
+      // newMesh.applyMatrix4(localMatrix.compose(
+      //   localVector.randomDirection().multiplyScalar(100).addScalar(30),
+      //   localQuaternion.random(),
+      //   localVector2.random().divideScalar(10)
+      // ));
+      // app.add(newMesh);
+      // newMesh.updateMatrixWorld();
+      
+      localMatrix.compose(
         localVector.randomDirection().multiplyScalar(100).addScalar(30),
         localQuaternion.random(),
         localVector2.random().divideScalar(10)
-      ));
-      app.add(newMesh);
-      newMesh.updateMatrixWorld();
-      
+      );
+      new Asteroid(app, mesh, localMatrix);
     }
   };
 
