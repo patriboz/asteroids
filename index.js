@@ -58,6 +58,7 @@ export default () => {
       this.sound.setLoop(true);
       this.sound.setRefDistance( 1 );
       this.sound.setMaxDistance( 1 );
+      this.sound.setDistanceModel('exponential');
       this.sound.play();
       this.mesh.children[0].children[0].children[0].add(this.sound);
 
