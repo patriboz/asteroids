@@ -236,7 +236,7 @@ console.log(mesh);
 
     //
     localMatrix.compose(
-      localVector.set(-100, 0, 0),
+      localVector.set(-100, 5, 0),
       localQuaternion.random(),
       localVector2.random().divideScalar(10)
     );
