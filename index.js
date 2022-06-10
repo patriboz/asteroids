@@ -53,6 +53,8 @@ export default () => {
       this.sound.play();
       this.mesh.add(this.sound);
 
+      console.log(this.sound);
+
       this.velocityX = Math.random() ** 2;
       localEuler.set(Math.random() / 100, Math.random() / 100, Math.random() / 100, 'XYZ');
       this.rotation = new THREE.Quaternion().setFromEuler(localEuler);
