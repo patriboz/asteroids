@@ -48,7 +48,7 @@ console.log(soundBuffer);
       this.sound = new THREE.PositionalAudio(audioListener);
       this.sound.setBuffer(soundBuffer);
       this.sound.setLoop(true);
-      this.sound.setRefDistance( 20 );
+      this.sound.setRefDistance( 5 );
       this.sound.play();
       this.mesh.add(this.sound);
 
