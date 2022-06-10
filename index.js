@@ -207,9 +207,9 @@ console.log(mesh);
       new MovingAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids);
     }
 
-    for(let i = 0; i < 20; i++) {
+    for(let i = 0; i < 10; i++) {
       localMatrix.compose(
-        localVector.randomDirection().multiplyScalar(10).addScalar(10),
+        localVector.randomDirection().multiplyScalar(10).addScalar(5),
         localQuaternion.random(),
         localVector2.random().divideScalar(10)
       );
