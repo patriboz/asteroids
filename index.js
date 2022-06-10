@@ -49,7 +49,7 @@ export default () => {
       this.sound.setBuffer(soundBuffer);
       this.sound.setLoop(true);
       this.sound.setRefDistance( 1 );
-      this.sound.setMaxDistance( 30 );
+      this.sound.setMaxDistance( 10 );
       this.sound.play();
       this.mesh.add(this.sound);
 
@@ -61,7 +61,6 @@ export default () => {
     move() {
       if(this.mesh.position.x > 300) {
         this.mesh.position.setX(-300);
-        console.log(this.sound.getOutput());
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
       this.sound.position.copy(this.mesh.position);
