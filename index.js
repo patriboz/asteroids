@@ -33,16 +33,8 @@ export default () => {
   }
 
   class PhysicalAsteroid extends Asteroid {
-    constructor(app, mesh, localMatrix, physics, physicsIds, soundBuffer) {
+    constructor(app, mesh, localMatrix, physics, physicsIds) {
       super(app, mesh, localMatrix);
-
-      // this.sound = new THREE.PositionalAudio(audioListener);
-      // this.sound.setBuffer(soundBuffer);
-      // this.sound.setLoop(true);
-      // this.sound.setRefDistance( 1 );
-      // this.sound.setMaxDistance( 1 );
-      // this.sound.play();
-      // this.mesh.children[0].children[0].children[0].add(this.sound);
 
       this.physicsId = physics.addGeometry(this.mesh);
       physicsIds.push(this.physicsId);
@@ -50,19 +42,8 @@ export default () => {
   }
 
   class MovingAsteroid extends Asteroid {
-    constructor(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer) {
+    constructor(app, mesh, localMatrix, localEuler, movingAsteroids) {
       super(app, mesh, localMatrix);
-
-      // this.sound = new THREE.PositionalAudio(audioListener);
-      // this.sound.setBuffer(soundBuffer);
-      // this.sound.setLoop(true);
-      // this.sound.setRefDistance( 1 );
-      // this.sound.setMaxDistance( 1 );
-      // this.sound.setDistanceModel('exponential');
-      // this.sound.play();
-      // this.mesh.children[0].children[0].children[0].add(this.sound);
-
-      // console.log(this.sound);
 
       this.velocityX = Math.random() ** 2;
       localEuler.set(Math.random() / 100, Math.random() / 100, Math.random() / 100, 'XYZ');
@@ -72,11 +53,8 @@ export default () => {
     move() {
       if(this.mesh.position.x > 300) {
         this.mesh.position.setX(-300);
-        // console.log(this.sound.getVolume());
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
-      //this.sound.panner.position.copy(this.mesh.position);
-      // this.sound.updateMatrixWorld();
       this.mesh.quaternion.premultiply(this.rotation);
     }
   }
@@ -94,9 +72,7 @@ export default () => {
       this.sound.play();
       this.mesh.children[0].children[0].children[0].add(this.sound);
 
-      // console.log(this.sound);
-
-      this.velocityX = 1; //Math.random() ** 2;
+      this.velocityX = Math.random() ** 2;
       localEuler.set(Math.random() / 100, Math.random() / 100, Math.random() / 100, 'XYZ');
       this.rotation = new THREE.Quaternion().setFromEuler(localEuler);
       movingAsteroids.push(this);
@@ -104,11 +80,8 @@ export default () => {
     move() {
       if(this.mesh.position.x > 300) {
         this.mesh.position.setX(-300);
-        // console.log(this.sound.getVolume());
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
-      //this.sound.panner.position.copy(this.mesh.position);
-      // this.sound.updateMatrixWorld();
       this.mesh.quaternion.premultiply(this.rotation);
     }
   }
@@ -181,7 +154,7 @@ console.log(mesh);
 
     for(const asteroid of asteroids) {
       localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale);
-      new PhysicalAsteroid(app, mesh, localMatrix, physics, physicsIds, soundBuffer);
+      new PhysicalAsteroid(app, mesh, localMatrix, physics, physicsIds);
     }
 
     createAsteroidField(mesh, soundBuffer);
@@ -225,23 +198,23 @@ console.log(mesh);
       new Asteroid(app, mesh, localMatrix);
     }
 
-    for(let i = 0; i < 100; i++) {
+    for(let i = 0; i < 80; i++) {
       localMatrix.compose(
         localVector.randomDirection().multiplyScalar(100).addScalar(30),
         localQuaternion.random(),
         localVector2.random().divideScalar(10)
       );
-      new MovingAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer);
+      new MovingAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids);
     }
 
-    //
-    localMatrix.compose(
-      localVector.set(-100, 20, 0),
-      localQuaternion.random(),
-      localVector2.random().divideScalar(10)
-    );
-    new MovingSoundAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer);
-    //
+    for(let i = 0; i < 20; i++) {
+      localMatrix.compose(
+        localVector.randomDirection().multiplyScalar(10).addScalar(10),
+        localQuaternion.random(),
+        localVector2.random().divideScalar(10)
+      );
+      new MovingSoundAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer);
+    }
   };
 
   return app;
