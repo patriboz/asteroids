@@ -42,8 +42,10 @@ export default () => {
   }
 
   class MovingAsteroid extends Asteroid {
-    constructor(app, mesh, localMatrix, localEuler, movingAsteroids) {
+    constructor(app, mesh, localMatrix, localEuler, movingAsteroids, sound) {
       super(app, mesh, localMatrix);
+
+      this.mesh.add(sound);
 
       this.velocityX = Math.random() ** 2;
       localEuler.set(Math.random() / 100, Math.random() / 100, Math.random() / 100, 'XYZ');
@@ -114,14 +116,14 @@ export default () => {
       sound.setRefDistance( 20 );
       sound.play();
     });
-    mesh.add(sound);
+    
 
     for(const asteroid of asteroids) {
       localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale);
       new PhysicalAsteroid(app, mesh, localMatrix, physics, physicsIds);
     }
 
-    createAsteroidField(mesh);
+    createAsteroidField(mesh, sound);
     app.updateMatrixWorld();
   })();
 
@@ -152,7 +154,7 @@ export default () => {
     }
   };
 
-  const createAsteroidField = (mesh) => {
+  const createAsteroidField = (mesh, sound) => {
     for(let i = 0; i < 100; i++) {
       localMatrix.compose(
         localVector.randomDirection().multiplyScalar(100).addScalar(30),
@@ -168,7 +170,7 @@ export default () => {
         localQuaternion.random(),
         localVector2.random().divideScalar(10)
       );
-      new MovingAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids);
+      new MovingAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids, sound);
     }
   };
 
