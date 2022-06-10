@@ -61,6 +61,8 @@ export default () => {
       this.sound.play();
       this.mesh.children[0].children[0].children[0].add(this.sound);
 
+      console.log(this.sound);
+
       this.velocityX = Math.random() ** 2;
       localEuler.set(Math.random() / 100, Math.random() / 100, Math.random() / 100, 'XYZ');
       this.rotation = new THREE.Quaternion().setFromEuler(localEuler);
@@ -72,7 +74,7 @@ export default () => {
         // console.log(this.sound.getVolume());
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
-      this.sound.panner.position.copy(this.mesh.position);
+      //this.sound.panner.position.copy(this.mesh.position);
       // this.sound.updateMatrixWorld();
       this.mesh.quaternion.premultiply(this.rotation);
     }
