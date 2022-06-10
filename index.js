@@ -113,6 +113,7 @@ export default () => {
     const audioLoader = new THREE.AudioLoader();
     audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
       sound.setBuffer( buffer );
+      sound.setLoop(true);
       sound.setRefDistance( 20 );
       sound.play();
     });
