@@ -20,6 +20,8 @@ export default () => {
   const localQuaternion = new THREE.Quaternion();
   const localMatrix = new THREE.Matrix4();
 
+  
+
   class Asteroid {
     constructor(app, mesh, localMatrix) {
       this.app = app;
@@ -89,6 +91,11 @@ export default () => {
   ];
 
   
+  const audioListener = new THREE.AudioListener();
+  localPlayer.add(audioListener);
+  const sound = new THREE.PositionalAudio(audioListener);
+
+
 
 
   (async () => {
@@ -100,6 +107,14 @@ export default () => {
     });
 
     let mesh = gltf.scene;
+
+    const audioLoader = new THREE.AudioLoader();
+    audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
+      sound.setBuffer( buffer );
+      sound.setRefDistance( 20 );
+      sound.play();
+    });
+    mesh.add(sound);
 
     for(const asteroid of asteroids) {
       localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale);
