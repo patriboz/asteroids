@@ -42,10 +42,15 @@ export default () => {
   }
 
   class MovingAsteroid extends Asteroid {
-    constructor(app, mesh, localMatrix, localEuler, movingAsteroids, sound) {
+    constructor(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer) {
       super(app, mesh, localMatrix);
 
-      this.mesh.add(sound);
+      this.sound = new THREE.PositionalAudio(audioListener);
+      this.sound.setBuffer(soundBuffer);
+      this.sound.setLoop(true);
+      this.sound.setRefDistance( 5 );
+      this.sound.play();
+      this.mesh.add(this.sound);
 
       this.velocityX = Math.random() ** 2;
       localEuler.set(Math.random() / 100, Math.random() / 100, Math.random() / 100, 'XYZ');
@@ -95,7 +100,8 @@ export default () => {
   
   const audioListener = new THREE.AudioListener();
   localPlayer.add(audioListener);
-  const sound = new THREE.PositionalAudio(audioListener);
+
+  
 
 
 
@@ -109,13 +115,11 @@ export default () => {
     });
 
     let mesh = gltf.scene;
+    let soundBuffer;
 
     const audioLoader = new THREE.AudioLoader();
     audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
-      sound.setBuffer( buffer );
-      sound.setLoop(true);
-      sound.setRefDistance( 5 );
-      sound.play();
+      soundBuffer = buffer;
     });
     
 
@@ -124,7 +128,7 @@ export default () => {
       new PhysicalAsteroid(app, mesh, localMatrix, physics, physicsIds);
     }
 
-    createAsteroidField(mesh, sound);
+    createAsteroidField(mesh, soundBuffer);
     app.updateMatrixWorld();
   })();
 
@@ -155,7 +159,7 @@ export default () => {
     }
   };
 
-  const createAsteroidField = (mesh, sound) => {
+  const createAsteroidField = (mesh, soundBuffer) => {
     for(let i = 0; i < 100; i++) {
       localMatrix.compose(
         localVector.randomDirection().multiplyScalar(100).addScalar(30),
@@ -171,7 +175,7 @@ export default () => {
         localQuaternion.random(),
         localVector2.random().divideScalar(10)
       );
-      new MovingAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids, sound);
+      new MovingAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer);
     }
   };
 
