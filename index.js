@@ -48,8 +48,8 @@ export default () => {
       this.sound = new THREE.PositionalAudio(audioListener);
       this.sound.setBuffer(soundBuffer);
       this.sound.setLoop(true);
-      this.sound.setRefDistance( 10 );
-      //this.sound.setMaxDistance( 10 );
+      this.sound.setRefDistance( 1 );
+      this.sound.setMaxDistance( 1 );
       this.sound.play();
       this.mesh.children[0].children[0].children[0].add(this.sound);
 
@@ -66,7 +66,7 @@ export default () => {
         console.log(this.sound.getVolume());
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
-      this.sound.position.copy(this.mesh.position);
+      //this.sound.position.copy(this.mesh.position);
       this.sound.updateMatrixWorld();
       this.mesh.quaternion.premultiply(this.rotation);
     }
