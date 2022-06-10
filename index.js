@@ -103,7 +103,7 @@ export default () => {
 
   
   const audioListener = new THREE.AudioListener();
-  localPlayer.add(audioListener);
+  camera.add(audioListener);
 
   
 
@@ -119,6 +119,7 @@ export default () => {
     });
 
     let mesh = gltf.scene;
+console.log(mesh);
     let soundBuffer;
     let test = 1;
 
