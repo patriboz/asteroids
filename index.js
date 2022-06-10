@@ -120,6 +120,7 @@ console.log(soundBuffer);
     const audioLoader = new THREE.AudioLoader();
     audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
       soundBuffer = buffer;
+      console.log(soundBuffer);
     });
     console.log(soundBuffer);
 
