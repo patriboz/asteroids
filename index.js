@@ -63,6 +63,7 @@ export default () => {
     move() {
       if(this.mesh.position.x > 300) {
         this.mesh.position.setX(-300);
+        console.log(this.sound.getVolume());
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
       this.sound.position.copy(this.mesh.position);
