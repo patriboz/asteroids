@@ -127,30 +127,19 @@ export default () => {
 
 
   (async () => {
-    const url = `https://patriboz.github.io/asteroids/assets/rock/scene.gltf`;
     let gltf = await new Promise((accept, reject) => {
         const {gltfLoader} = useLoaders();
+        const url = 'https://patriboz.github.io/asteroids/assets/rock/scene.gltf';
         gltfLoader.load(url, accept, function onprogress() {}, reject);
-        
     });
 
     let mesh = gltf.scene;
-console.log(mesh);
-    let soundBuffer;
-    let test = 1;
 
-    await new Promise((accept, reject) => {
+    let soundBuffer = await new Promise((accept, reject) => {
       const audioLoader = new THREE.AudioLoader();
-      audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
-        soundBuffer = buffer;
-        console.log(test);
-        accept();
-      });
-    })
-    
-    
-    console.log(soundBuffer);
-    console.log(useLoaders());
+      const url = 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3';
+      audioLoader.load(url, accept, function onprogress() {}, reject);
+    });
 
     for(const asteroid of asteroids) {
       localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale);
