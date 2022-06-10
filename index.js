@@ -49,6 +49,7 @@ export default () => {
       this.sound.setBuffer(soundBuffer);
       this.sound.setLoop(true);
       this.sound.setRefDistance( 1 );
+      this.sound.setMaxDistance( 30 );
       this.sound.play();
       this.mesh.add(this.sound);
 
