@@ -66,7 +66,7 @@ export default () => {
       this.sound = new THREE.PositionalAudio(audioListener);
       this.sound.setBuffer(soundBuffer);
       this.sound.setLoop(true);
-      this.sound.setRefDistance( 10 );
+      this.sound.setRefDistance( 5 );
       //this.sound.setMaxDistance( 1 );
       // this.sound.setDistanceModel('exponential');
       this.sound.play();
