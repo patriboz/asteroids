@@ -211,7 +211,7 @@ console.log(mesh);
       localMatrix.compose(
         localVector.randomDirection().multiplyScalar(10).addScalar(10),
         localQuaternion.random(),
-        localVector2.random().divideScalar(10)
+        localVector2.random().divideScalar(15)
       );
       new MovingSoundAsteroid(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer);
     }
