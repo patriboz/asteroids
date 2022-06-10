@@ -72,7 +72,7 @@ export default () => {
       this.sound.play();
       this.mesh.children[0].children[0].children[0].add(this.sound);
 
-      this.velocityX = Math.random() ** 2;
+      this.velocityX = Math.random() * 0.5 + 0.5;
       localEuler.set(Math.random() / 100, Math.random() / 100, Math.random() / 100, 'XYZ');
       this.rotation = new THREE.Quaternion().setFromEuler(localEuler);
       movingAsteroids.push(this);
