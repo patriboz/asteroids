@@ -63,6 +63,7 @@ export default () => {
         console.log(this.sound.getOutput());
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
+      this.sound.position.copy(this.mesh.position);
       this.mesh.quaternion.premultiply(this.rotation);
     }
   }
