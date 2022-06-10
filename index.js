@@ -36,13 +36,13 @@ export default () => {
     constructor(app, mesh, localMatrix, physics, physicsIds, soundBuffer) {
       super(app, mesh, localMatrix);
 
-      this.sound = new THREE.PositionalAudio(audioListener);
-      this.sound.setBuffer(soundBuffer);
-      this.sound.setLoop(true);
-      this.sound.setRefDistance( 1 );
-      this.sound.setMaxDistance( 1 );
-      this.sound.play();
-      this.mesh.children[0].children[0].children[0].add(this.sound);
+      // this.sound = new THREE.PositionalAudio(audioListener);
+      // this.sound.setBuffer(soundBuffer);
+      // this.sound.setLoop(true);
+      // this.sound.setRefDistance( 1 );
+      // this.sound.setMaxDistance( 1 );
+      // this.sound.play();
+      // this.mesh.children[0].children[0].children[0].add(this.sound);
 
       this.physicsId = physics.addGeometry(this.mesh);
       physicsIds.push(this.physicsId);
@@ -53,13 +53,13 @@ export default () => {
     constructor(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer) {
       super(app, mesh, localMatrix);
 
-      // this.sound = new THREE.PositionalAudio(audioListener);
-      // this.sound.setBuffer(soundBuffer);
-      // this.sound.setLoop(true);
-      // this.sound.setRefDistance( 1 );
-      // this.sound.setMaxDistance( 1 );
-      // this.sound.play();
-      // this.mesh.children[0].children[0].children[0].add(this.sound);
+      this.sound = new THREE.PositionalAudio(audioListener);
+      this.sound.setBuffer(soundBuffer);
+      this.sound.setLoop(true);
+      this.sound.setRefDistance( 1 );
+      this.sound.setMaxDistance( 1 );
+      this.sound.play();
+      this.mesh.children[0].children[0].children[0].add(this.sound);
 
       this.velocityX = Math.random() ** 2;
       localEuler.set(Math.random() / 100, Math.random() / 100, Math.random() / 100, 'XYZ');
@@ -72,7 +72,7 @@ export default () => {
         // console.log(this.sound.getVolume());
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
-      //this.sound.position.copy(this.mesh.position);
+      this.sound.panner.position.copy(this.mesh.position);
       // this.sound.updateMatrixWorld();
       this.mesh.quaternion.premultiply(this.rotation);
     }
@@ -111,7 +111,7 @@ export default () => {
 
   
   const audioListener = new THREE.AudioListener();
-  camera.add(audioListener);
+  localPlayer.add(audioListener);
 
   
 
