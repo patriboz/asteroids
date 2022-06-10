@@ -118,12 +118,18 @@ console.log(soundBuffer);
     let soundBuffer;
     let test = 1;
 
-    const audioLoader = new THREE.AudioLoader();
-    audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
-      soundBuffer = buffer;
-      console.log(test);
-    });
+    await new Promise((accept, reject) => {
+      const audioLoader = new THREE.AudioLoader();
+      audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
+        soundBuffer = buffer;
+        console.log(test);
+        accept();
+      });
+    })
+    
+    
     console.log(soundBuffer);
+    console.log(useLoaders());
 
     for(const asteroid of asteroids) {
       localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale);
