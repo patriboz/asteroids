@@ -44,7 +44,7 @@ export default () => {
   class MovingAsteroid extends Asteroid {
     constructor(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer) {
       super(app, mesh, localMatrix);
-
+console.log(soundBuffer);
       this.sound = new THREE.PositionalAudio(audioListener);
       this.sound.setBuffer(soundBuffer);
       this.sound.setLoop(true);
@@ -121,7 +121,7 @@ export default () => {
     audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
       soundBuffer = buffer;
     });
-    
+    console.log(soundBuffer);
 
     for(const asteroid of asteroids) {
       localMatrix.compose(asteroid.position, asteroid.quat, asteroid.scale);
