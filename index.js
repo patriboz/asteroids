@@ -60,7 +60,7 @@ export default () => {
     move() {
       if(this.mesh.position.x > 300) {
         this.mesh.position.setX(-300);
-        this.sound.getOutput();
+        console.log(this.sound.getOutput());
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
       this.mesh.quaternion.premultiply(this.rotation);
