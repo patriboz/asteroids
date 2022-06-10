@@ -116,11 +116,12 @@ console.log(soundBuffer);
 
     let mesh = gltf.scene;
     let soundBuffer;
+    let test = 1;
 
     const audioLoader = new THREE.AudioLoader();
     audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
       soundBuffer = buffer;
-      console.log(soundBuffer);
+      console.log(test);
     });
     console.log(soundBuffer);
 
