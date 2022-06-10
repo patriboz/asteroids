@@ -51,7 +51,7 @@ export default () => {
       this.sound.setRefDistance( 1 );
       this.sound.setMaxDistance( 10 );
       this.sound.play();
-      this.mesh.add(this.sound);
+      this.mesh.children[0].children[0].children[0].add(this.sound);
 
       console.log(this.sound);
 
