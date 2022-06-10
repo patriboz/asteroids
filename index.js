@@ -44,7 +44,7 @@ export default () => {
   class MovingAsteroid extends Asteroid {
     constructor(app, mesh, localMatrix, localEuler, movingAsteroids, soundBuffer) {
       super(app, mesh, localMatrix);
-console.log(soundBuffer);
+
       this.sound = new THREE.PositionalAudio(audioListener);
       this.sound.setBuffer(soundBuffer);
       this.sound.setLoop(true);
@@ -60,6 +60,7 @@ console.log(soundBuffer);
     move() {
       if(this.mesh.position.x > 300) {
         this.mesh.position.setX(-300);
+        this.sound.getOutput();
       }
       this.mesh.position.setX(this.mesh.position.x + this.velocityX);
       this.mesh.quaternion.premultiply(this.rotation);
