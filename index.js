@@ -114,7 +114,7 @@ export default () => {
     audioLoader.load( 'https://patriboz.github.io/asteroids/assets/audio/white-noise.mp3', function( buffer ) {
       sound.setBuffer( buffer );
       sound.setLoop(true);
-      sound.setRefDistance( 1 );
+      sound.setRefDistance( 5 );
       sound.play();
     });
     
