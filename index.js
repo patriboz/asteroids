@@ -209,7 +209,7 @@ console.log(mesh);
 
     for(let i = 0; i < 5; i++) {
       localMatrix.compose(
-        localVector.randomDirection().multiplyScalar(10).addScalar(5),
+        localVector.randomDirection().multiplyScalar(10).addScalar(10),
         localQuaternion.random(),
         localVector2.random().divideScalar(10)
       );
