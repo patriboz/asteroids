@@ -236,7 +236,7 @@ export default () => {
 
     for(let i = 0; i < 10; i++) {
       localMatrix.compose(
-        localVector.randomDirection().multiplyScalar(10).addScalar(7),
+        localVector.randomDirection().multiplyScalar(15).addScalar(10),
         localQuaternion.random(),
         localVector2.random().divideScalar(12)
       );
