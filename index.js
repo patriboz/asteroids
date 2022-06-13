@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import {Vector3,Vector4,TextureLoader,Group,AdditiveBlending,Object3D} from 'three';
-// import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+
 import {
   Bezier, ColorOverLife, ColorRange,
   ConeEmitter,DonutEmitter, ConstantColor, ConstantValue, FrameOverLife,
