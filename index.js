@@ -132,9 +132,9 @@ export default () => {
       scale: new THREE.Vector3(0.04, 0.04, 0.04)
     },
     {
-      position: new THREE.Vector3(70, -45, -10), 
+      position: new THREE.Vector3(70, -50, -30), 
       quat: new THREE.Quaternion(0, 0, 0, 1), 
-      scale: new THREE.Vector3(0.04, 0.04, 0.04)
+      scale: new THREE.Vector3(0.06, 0.03, 0.06)
     }
   ];
 
@@ -198,7 +198,7 @@ export default () => {
         }
 
       // Resets character position to spawn position
-      if(localPlayer.position.y < -50) {
+      if(localPlayer.position.y < -70) {
         physics.setCharacterControllerPosition(localPlayer.characterController, defaultSpawn);
       }
     }
