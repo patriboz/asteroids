@@ -157,6 +157,7 @@ export default () => {
     }
   });  
 
+  let lastFoundObj;
   useFrame(({ timeDiff, timestamp }) => {
 
     if(localPlayer.avatar) {
@@ -167,8 +168,9 @@ export default () => {
         const resultDown = physics.raycast(localPlayer.position, downQuat);
         if(resultDown && localPlayer.characterPhysics.lastGroundedTime === timestamp) {
           let foundObj = metaversefile.getPhysicsObjectByPhysicsId(resultDown.objectId);
-          if(foundObj) {
-            console.log(foundObj);
+          if(foundObj && !(lastFoundObj === foundObj)) {
+            lastFoundObj = foundObj;
+            console.log(localPlayer.position);
           }
         }
 
