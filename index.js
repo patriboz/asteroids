@@ -193,7 +193,7 @@ export default () => {
           let foundObj = metaversefile.getPhysicsObjectByPhysicsId(resultDown.objectId);
           if(foundObj && !(lastFoundObj === foundObj)) {
             lastFoundObj = foundObj;
-            console.log(localPlayer.position);
+            console.log(localPlayer.position, localPlayer.quaternion);
           }
         }
 
