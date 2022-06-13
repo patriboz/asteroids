@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {Vector3,Vector4,TextureLoader,Group,AdditiveBlending,Object3D} from 'three';
 // import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import {
   Bezier, ColorOverLife, ColorRange,
@@ -366,3 +367,10 @@ export default () => {
 
   return app;
 };
+
+/*,
+    {
+      "position": [0, 0, 0],
+      "quaternion": [0, 0, 0, 1],
+      "start_url": "https://webaverse.github.io/dust-particles/"
+    } */
