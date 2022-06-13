@@ -159,12 +159,25 @@ export default () => {
 
   useFrame(({ timeDiff, timestamp }) => {
 
-    moveAsteroids();
+    if(localPlayer.avatar) {
+      moveAsteroids();
 
-    // Resets character position to spawn position
-    if(localPlayer.position.y < -50) {
-      physics.setCharacterControllerPosition(localPlayer.characterController, defaultSpawn);
+      // https://github.com/webaverse/bridge-section/blob/main/index.js
+      const downQuat = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI*0.5);
+        const resultDown = physics.raycast(localPlayer.position, downQuat);
+        if(resultDown && localPlayer.characterPhysics.lastGroundedTime === timestamp) {
+          let foundObj = metaversefile.getPhysicsObjectByPhysicsId(resultDown.objectId);
+          if(foundObj) {
+            console.log(foundObj);
+          }
+        }
+
+      // Resets character position to spawn position
+      if(localPlayer.position.y < -50) {
+        physics.setCharacterControllerPosition(localPlayer.characterController, defaultSpawn);
+      }
     }
+    
 
     app.updateMatrixWorld();
   });
