@@ -127,14 +127,14 @@ export default () => {
       scale: new THREE.Vector3(0.04, 0.04, 0.04)
     },
     {
-      position: new THREE.Vector3(60, -40, -15), 
+      position: new THREE.Vector3(58, -40, -15), 
       quat: new THREE.Quaternion(0, 0, 0, 1), 
       scale: new THREE.Vector3(0.04, 0.04, 0.04)
     },
     {
       position: new THREE.Vector3(70, -50, -30), 
       quat: new THREE.Quaternion(0, 0, 0, 1), 
-      scale: new THREE.Vector3(0.06, 0.03, 0.06)
+      scale: new THREE.Vector3(0.06, 0.02, 0.06)
     }
   ];
 
